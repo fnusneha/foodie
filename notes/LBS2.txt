@@ -1,0 +1,130 @@
+LBS
+
+Locationmanager-
+find location of ur device
+set proximity alerts if you move inside or outside certain ares.
+track movement
+find available location providers
+
+LocationManager manager=(LocationManager)getSystemServices(LOCTIONSERVICES);
+<uses permision=ACCESS_FINE<COARSE>_LOCATION>
+Criteria se tum dictate kar sakti ho ki tumhare kya cririas hain eg-criteria.setAccuracy(Criteria.Accuracy_Fine)
+criteria.setPowerRequirement(Criteria.powerlow);
+
+you can get the provider by-
+string provider=locationManager.getBestPovider(criteria,true);
+Location location=Manager.getLastKnownLocation(provider);
+updatewithnewlocation(location)//???
+Manager.requestlocationupdates(provider,2000,10,listener);
+private LocationListener listener=new LocationListener(){
+public void onlocationchanged(Location location){
+updatewithnewlocation(location);//ye ek method banao jis ma getlatitude and get longitude kar k location banwa lo.
+}
+//aur bhi bahoot sare methods hain overrride karne k
+onstatuschanged(provider,int status,bundle)
+onProviderchanged()
+
+
+Geocoding---address to latlong and vice versa<include internetpermission>
+//forward geocoding
+ArrayList<Adress> addressList=geocoder.getFromLocationNmae(cityname,1);
+Address address=AddressList.get(0);
+if(address.hasLatiude && address.hasLongitude()){
+adress.getlongitude();//save kar lo kahin
+address.getlatitude();
+//reverse geocoding
+ArrayList<Adress> addresslist=geocoder.getFromLocation(lat,long,1);
+StringBuilder sb=new StringBuilder();
+if(addresslist.size>0){
+Address adress=addressList.get(0);
+for loop adress.getMaxAdressLineIndex() tak
+sb.append(adress.getLocality())
+sb.append(adress.getPostalCode())
+sb.append(addresss.getCountryNmae())
+}
+}
+
+ye sab android ka kaam tha..aab key genrate karo Map APi se and drag map view and key paste karo wahan
+MapController c=myMapView.getController();
+c.setZoom(1)//1 se 21 daal sakte hain
+OverLay class helps us to put some cutomized marker or pins on ceratin locations and handle clicks when we tap that location on our MapView.
+onTap method
+
+
+aab project ma tumne kaise map ka kaam kia ha.
+MapFragment f = (MapFragment) getFragmentManager().findFragmentById(
+				R.id.map123);
+		googleMap = f.getMap();
+apna ocation dikhane k lia map par
+
+googleMap.setMyLocationEnabled(true);
+
+		Location location = googleMap.getMyLocation();
+
+		if (location != null) {
+			LatLng some = new LatLng(location.getLatitude(),
+					location.getLongitude());
+			CameraUpdate UPDATE = CameraUpdateFactory.newLatLngZoom(some, 10);
+			googleMap.animateCamera(UPDATE);
+
+		}
+
+*************************************************************************************************************************8888
+Proximity Alerts
+LocationManager Manager le lo pehle kyunki sara kaam wahi karta ha.
+
+Manager.requestLoactionUpdates(Privder ka name,har upadte k beech ka time interval,ketne dist change ma updates bheun ka time interval,LocationListener ka object);
+)
+Agar user great mall pahuncha,wahan par use apna alert point dalna ha to manager.getLastKnownLocationUpdates(LocationManager.GPS_PROVIDER)
+last known location se jo location mila use shared prefrences ma save kar lo uska latitude and logitude.followed by--
+addProximityAlert koi method bana lo jis ma ye karna ha--
+
+         Intent intent = new Intent(PROX_ALERT_INTENT);
+097
+        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+098
+         
+099
+        locationManager.addProximityAlert(
+100
+            latitude, // the latitude of the central point of the alert region
+101
+            longitude, // the longitude of the central point of the alert region
+102
+            POINT_RADIUS, // the radius of the central point of the alert region, in meters
+103
+            PROX_ALERT_EXPIRATION, // time for this proximity alert, in milliseconds, or -1 to indicate no expiration
+104
+            proximityIntent //pending intent
+105
+       );
+106
+         
+107
+       IntentFilter filter = new IntentFilter(PROX_ALERT_INTENT); 
+
+       registerReceiver(new ProximityIntentReceiver(), filter);
+
+ public class MyLocationListener implements LocationListener {
+
+        public void onLocationChanged(Location location) {
+   Location pointLocation = retrievelocationFromPreferences();
+float distance = location.distanceTo(pointLocation);
+        }
+
+
+
+
+
+Pir apne broadcast reciever ma --
+ @Override
+public void onReceive(Context context, Intent intent) {
+ String key = LocationManager.KEY_PROXIMITY_ENTERING;
+ Boolean entering = intent.getBooleanExtra(key, false);
+//hir jo karna ha karo
+
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+

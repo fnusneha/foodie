@@ -1,0 +1,98 @@
+  tjava -7
+JVM()java virtual machine=jre-java runtime environment.
+jdk-java developmwnt kit
+
+
+j2se(java 2 standard edition)/j2me(java 2 mobile edition)/j2ee(java 2 enterprise edition)
+
+see android what it uses?
+
+java data types--primitive and object refrence
+alll dervived from java.lang.Object
+everything is inside classes.
+
+command line aurgumnet ma name of the program anhi ati ha unlike cpp.
+private/public/package private-acces level.
+genreally people make it package private.
+genreally interfaces public hote hain.
+jar k anadr ek manifest file hoti ha jis ma sra list hota ha sare classes hote hain.
+final kar sakti ho classs-cant extend.function ko bhi.variabe ko bhi.
+
+cpp ma----
+
+har ek base class ma jaise hi koi fnction virtual kate hain waise hi uska ek vtable ban jata ha.matlab ki uska pobjet ka size 4 byte se bhad jata ha.
+kyunki wo ek pointer ha vtable ka.vtable actually code srea ma hota ha.har ek virtaul fnction ka @  us ma bhada hota ha.
+jaise kisi ne use derive kia to v table uska bhi ban jayega aur over ride karna par....wo function update kar dega adddress apne vtable ma.
+koi bhi virtual function ha to destructor bhi virtual hoga.
+
+Java----
+By default virtual.
+
+java ka inheritance sirf public ho sata ha.
+intefaces of java=class of all public pure virtual functions with private constructor.//so ye defination sahi ha coz marker interface ma koi function nahi hua to kahin uska object na abna de kioi..
+Marker interface--that is interface widout any function.(eg-seilizable.)
+
+Object class-toString(),---bas memory ka address print kar deta ha.bechare ko kya pata ki kaun sa object ayega us ma?
+hash code and equals.
+cpp ka refrence--us variable ka dusra name.
+java ka refrence=cpp ka pointer
+
+cpp-Student s;(s object is made)
+java-Student s;only refrence(same as writing Student* s as in cpp)
+
+cpp ma pass by value and pass by refrence arte hain.(refrence to bas dusra name ha)
+java ma object hi ban sakta ha in heap not in stack;
+koi bhi refrence ma koi bhi derived class ka object bhad sakte ho unless final na ho//polymorphism very strong factor ha.
+Standard interface-java.util.list/java util map/java util set
+
+java ma ek function ma pehle socho ki kis cheez ko call karna ha aur uske accordingly sabse upar walla interface lo so taht wo kuch bhi pass kar sake.
+
+
+Type Erasure.--- emplate class jaise CPP ma thi wo diffrent ha java ma.kaise??/
+Har baar ek naya class banta tha cpp ma jaise hi ham template call karte hain.T ko replace kar k but java ma----again POLYMORPHISM
+java ma complier compile time ma chk kar leta ha ki kya esne jis tarah ka T likha ho wo actual ma pass kia ki nahi,but etna karne k baad wo bhool jata ha.Wo bas T ki jagah par OBJECT bhar deta ha.ese hi type erasing kehte hain.
+agar hamen Object clas k alawa koi aur functions ko use karne hain to ha es tarah likhte hain---
+MyClass<T extends Comparable<T>>//ye phir jo bhi class extend karwate hain jo hamen use karna ha.
+
+
+eslia ham ye ch nahi kar skte hain ki instanceof(List<String>)//coz wo earse ho chuka ha
+ham ye chk kar sakte hain instanceof(List)
+
+java ma kisi bhi template ma primitive type nahi pass kar sakte hain.
+
+
+
+
+Comparable.-nautral oredring k lia hota ha.(ma ho sakta hun compare)
+Comparator-interface(kisi par kuch karte hain).
+public class StudentComparator implements Comparator<Student>{
+
+	@Override
+	public int compare(Student o1, Student o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
+
+Serilizable interface ek marker Interface ha.but es ma do methods likhne padte hain writetoobject and readtobject.see-java not perfect,evolved over ages.
+
+
+Interfaces ketne padhe hain?Serilaizable/Comparable/Comparator/Runnable/clonnable/throwable
+Cpp ma functor widout any paramert jaisa ha runnable---means rum a work unit.
+
+Object ka clone protected ha.Agar Clone karna ha to class ko impelemnt Clonnable karna hoga tabhi chalega.Clonnable ek marker INterface ha.
+synchronized ek keyword ha.function k aage likh dia to lock karega.
+gte/put sab synchronize kana hoga.
+syncharonizatio object par hota ha refrencepar nahi.
+
+Concurrent hash map--max chata ha ki lock na le..
+ERead Write lock is better then synchronization.
+read ek sath paralley kar sakte ho but write k smay sab ke lock chodne par hi qrite hoga aur koi kuch nahi kar sakta us samay,eslia better then synchronization.
+
+Concurrent Hash Map ma 10 buckets ma agar break kar do..to sabke lia exclusively write lock lena ha,so that 10 concurrent writes ho sakne.ye 10 ya some thing ham pass kar sakte hain aur internally wo break kar dega use.Phir,jab hamen rehash karna ha to ham ham write lock lenge rehash walla,tab na koi read kar sakta ha na write kar sakta ha.
+
+
+
+
+

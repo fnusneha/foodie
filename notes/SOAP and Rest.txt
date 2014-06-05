@@ -1,0 +1,11 @@
+consume web services-1>SOAP
+2>RESTFULL
+
+Client<-----------envelope(parameters/action/server side link)---------------->Server
+                        return type wapas ayega
+WSDL dega company regarding all APIs
+
+
+GoeCoder class
+GeoPoint((Int)lat,(Int)long)
+LBS

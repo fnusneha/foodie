@@ -1,0 +1,63 @@
+For getting list of all activities with a particulr action use this method---
+PackageManager pm = getPackageManager();
+		List<ResolveInfo> activities = pm.queryIntentActivities(new Intent(
+				RecognizerIntent.ACTION_RECOGNIZE_SPEECH<Give any Action name here>), 0);
+
+Firing an intent for speech recognition--
+Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+				"Speak Call/Message/Maps/Clock/Browser");//extra texts for hint k lia
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+				RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);//kaun sa language model use karo?
+		intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);//max recognised result ketna aye?
+		intent.putExtra(
+				RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
+				20000);//20000millisec tak nahi bologi to ruk jatyega
+
+		startActivityForResult(intent, 100);
+
+
+
+Result ane par kaise read karen??
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 100)
+
+			if (resultCode == RESULT_OK) {
+
+				ArrayList<String> MatchList = data
+						.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+				if (!MatchList.isEmpty()) {
+
+					if (MatchList.get(0).contains("call")) {
+						makeacall();
+
+					} else if (MatchList.get(0).contains("message")) {
+						sendmessage();
+
+					} else if (MatchList.get(0).contains("maps")) {
+						openmap();
+
+					} else if (MatchList.get(0).contains("browser")) {
+						openabrowser();
+
+					} else if (MatchList.get(0).contains("clock")) {
+						openclock();
+
+					}
+
+				}
+				// Result code for various error.
+			} else if (resultCode == RecognizerIntent.RESULT_AUDIO_ERROR) {
+				showToastMessage("Audio Error");
+			} else if (resultCode == RecognizerIntent.RESULT_CLIENT_ERROR) {
+				showToastMessage("Client Error");
+			} else if (resultCode == RecognizerIntent.RESULT_NETWORK_ERROR) {
+				showToastMessage("Network Error");
+			} else if (resultCode == RecognizerIntent.RESULT_NO_MATCH) {
+				showToastMessage("No Match");
+			} else if (resultCode == RecognizerIntent.RESULT_SERVER_ERROR) {
+				showToastMessage("Server Error");
+			}
+		super.onActivityResult(requestCode, resultCode, data);
+	}

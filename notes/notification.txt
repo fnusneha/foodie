@@ -1,0 +1,15 @@
+	
+Alarm
+Broadcast Reciever
+basics of using Maps
+
+
+Notification----
+NotificationCompact.Builder builder=new NotificationCompact.Builder(this);
+builder.setContentTitle()--upar ma title ha notification ka.
+setContentText()--pooora text notification ka.
+setContentInfo()--poora info notification ka.
+setContentIntent(pending)-- es se pending intent dalti ho paramter aur notification par click karne par ne activity khulta ha jo bhi khona chhao.
+setAutoCancel(true)--jab cancl karna ho after user clicks on it..jarur karna chaiye
+setTicker("Ticker")--jaise notification aye wo upar ma dikhaye thoda sa
+setVibrate(pattern);vibration-parameter long[] pattern={200,100};//milliseconds ma ha

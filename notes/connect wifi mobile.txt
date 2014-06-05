@@ -1,0 +1,6 @@
+atach with wire
+adb usb
+adb devices
+adb tcpip 2323
+adb connect <ip@>:2323
+see ip address---- about phone---status

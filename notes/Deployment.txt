@@ -1,0 +1,6 @@
+SDLC-requireemnt gathering/Analysis/Design/Implementation/Testing/Deployment/Miantance
+Agile Methodolgy---scrum(daily basis 15 mins)/xp(protype)/sprint(every 1-2 week)
+Waterfall
+
+you can not publish if u have example in ur packege name
+apk file+key file

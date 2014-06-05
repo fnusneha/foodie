@@ -1,0 +1,49 @@
+
+Menu inflate karne k lia ye likhna padega.ye method override ho kar menu ko inflate karna padega
+@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+Menu->main.xml
+
+ <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+    <item
+        android:id="@+id/search_icon"
+        android:icon="@drawable/search_icon"
+        android:showAsAction="ifRoom"
+        android:title="@string/search"/>
+
+Up boutton add karne k lia--
+
+Manifest file ma ja kar har acitivities(except parent ofcures) ma parent activity add kar do.
+android:parentActivityName="com.example.myfirstapp.MainActivity" >
+Activity tag ma... sabke baap ka name daal do.
+
+aur sabke onCreate() ma ja kar ye likh do-
+ getActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+Custom action bar banane k lia----
+Theme.xml banao values ma. us ma ye likho->uske baad manifest file ma particular activity ya poora app jis ma bhi lagana ha us ma ja kar laga do apne customactionbar walla.
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- the theme applied to the application or activity -->
+    <style name="CustomActionBarTheme"
+           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar"
+           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/action</item>
+    </style>
+</resources>

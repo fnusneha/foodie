@@ -1,0 +1,62 @@
+Instance variables/Local variables/Class variables(static)
+boolean-1bit
+char/short-16 bits
+byte-8 bits
+int-32
+long-64
+ float-32
+double-54
+** writer**
+File data = new File("books.txt");
+PrintWriter out = new PrintWriter( new BufferedWriter( new FileWriter(data)));
+out.print("some thing can be any data type");
+out.flush();
+out.close();
+**Reader**
+File data = new File("books.txt");
+BufferedReader in = new BufferedReader( new FileReader(data));
+
+code for this is-
+File data = new File("example.txt"); 
+if (data.exists())
+{ BufferedReader in = new BufferedReader( new FileReader(data)); 
+String line = in.readLine(); 
+while(line != null){ System.out.println(line);
+ line = in.readLine(); } 
+in.close();
+
+StringBuffer(thread safe) is synchronized and StringBuilder(not thread safe) is not
+
+
+Throwable class-Error and Exceptions
+Exceptions-checked and unchecked(Run time)
+
+Thread do chizon ka bacha ha--Object and Runnable interface
+setDamon(true) karne par ji thread use craete kia tha wo marega to ye bhi marega.
+
+Anima a=new Bird();
+Animal a=new Animal();
+refrence tumahra compile tme par check hota ha but object run time par.
+Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A test for their own type and for the class Object.
+Generic classes public static < E > void printArray( E[] inputArray )
+jab hamen restric karna ha.. ki kis tarah ka <T> wo le to..
+ public static <T extends Comparable<T>> T maximum(T x, T y, T z)
+eska restriction ha ki ye comparable type ka hi objects le sakta ha.
+public class Box<T> --Generic classes.
+
+Serialization--
+Ek object ko uske data types and all.
+ObjectInputStream and ObjectOutputStream 
+public final void writeObject(Object x) throws IOException
+public final Object readObject() throws IOException, ClassNotFoundException
+
+Class ko serilaizable banane k lia impelment srializable aur jo variables serilizable nahi ha use transient bana padega
+example--
+public class Employee implements java.io.Serializable
+{
+   public String name;
+   public String address;
+   public transient int SSN;
+   public int number;
+}
+

@@ -1,0 +1,342 @@
+Binding to a Service
+
+public class myService extends Service{
+@Override
+	public IBinder onBind(Intent intent) {
+		// TODO Auto-generated method stub
+		Toast.makeText(this, "onBind", Toast.LENGTH_LONG).show();
+		return mbinder;
+	}
+private final mbinder=new myBinder();
+
+public class myBinder extends Binder{
+myService getService(){
+return myService.this;
+}
+
+//koi ek mthod baa lo jo use karna ha koi activity se for this service
+public int add(int x, int y) {
+		return x + y;
+	}
+}
+
+
+
+
+//main activity se service ko bind karna ha to kaise karogi?
+
+onResume() method ma likha ha bindin walla code
+
+intent i=new intent(this,myService.class);
+bindService(i,conn<ye ServiceConnection ka object ha jo ki banana ha later outside myresume>,Context.BIND_AUTO_CREATE);
+
+
+private conn=new ServiceConnection(){
+//es ma do methods o overrride karte hain.
+@Override
+		public void onServiceDisconnected(ComponentName name) {
+			obj = null;//ye obj ha ek object myService class ka
+
+		}
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			MyBinder binder = (MyBinder) service;//wo jo parametr aya ha..i.e jo service connect hua ha usko typecast karo localbinder jo banya ha us ma
+			obj = binder.getService();
+			int result = obj.add(4, 5);
+
+		}
+
+
+}
+
+
+
+
+
+
+
+support difrent languages
+values
+values-fr
+values-hi
+
+Suppport diffrent version
+
+(id Build.Version.sdk>Build.sdk.Honeycomb)
+
+Support diffrent layouts
+layout
+layout-largelayout=land
+layout-large-land
+
+Fragmnets
+MyFragment my=(MyFragmnet)getfragmnetMnager.findFragmnetById();
+if(my==null||!my.isinLayout()){
+fire new intent;
+}
+
+Polymorphism-ham base class k refrence ya pointer ma dervied class k objects ko bharen to derived class k methods call honge.
+ham run time par check karenge ki onAttach(Activity activity) am jo activity pass hua ha i.e jo activity attch ho raha es fragment ma
+...kya wo Communicator interface ko implement kia ha?
+Communicator com=null;
+
+if(activity instanceof Communicator){
+	com=(Communicator) activity;// activity ma wo activity filled ho jo bhi attach hua es se.aab Communicator ek parent class ha activity ka.activity(child) ko typecast kar arhe hain parent ma.
+aab polymorphism k according.Fragment class ma agar kise ne bhi com.func() call kia to activity ka func() run hoga.
+Fragment.setrgumnet() kar k bhi koi data bhej sakte ho activity se fragmnet ma.
+}
+
+Shared Prefrence
+
+kay value pair save karne k lia hota ha.Mainly for settings.
+
+SharedPrefrences applevel=getPrefrences(MODE_PRIVATE);
+SharedPrefrences.Editior appeditor=applevel.edit();
+appeditor.putString("key","value");
+appeditor.commit();
+
+agar get karna ha pref jo save hua ha to call. applevel<sharedPrefrence ka refrence>.getString("key","default value");
+
+
+
+FILES
+Raw folder se rea karne k lia
+InputStream is = this.getResources().openRawResource(R.raw.textfile);
+BufferedReader bf=new BufferedReader(new InputStreamReader(is));
+try {
+            while ((str = br.readLine()) != null) {
+                Toast.makeText(getBaseContext(), 
+                    str, Toast.LENGTH_SHORT).show();
+            }
+            is.close();
+            br.close();
+
+External storage k lia
+
+            File sdCard = Environment.getExternalStorageDirectory(); //tumahe adcard ka path milega
+
+            File directory = new File (sdCard.getAbsolutePath() +"/MyFiles"); //apna path bana do
+directory.mkdirs();  //directory ban ajyegi
+
+            File file = new File(directory, "textfile.txt")//file ban jayegi teri specified directory ma
+FileOutputStream fOut =	openFileOutput("textfile.txt",MODE_WORLD_READABLE);
+OutputStreamWriter osw = new OutputStreamWriter(fOut);
+osw.write(str);
+osw.flush(); 
+osw.close();
+
+Read from external storage-
+/*private void readFileFromSDCard() {
+		  File directory = Environment.getExternalStorageDirectory();
+		  // Assumes that a file article.rss is available on the SD card
+		  File file = new File(directory + "/article.rss");
+		  if (!file.exists()) {
+		    throw new RuntimeException("File not found");
+		  }
+		  Log.e("Testing", "Starting to read");
+		  BufferedReader reader = null;
+		  try {
+		    reader = new BufferedReader(new FileReader(file));
+		    StringBuilder builder = new StringBuilder();
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		      builder.append(line);
+		    }
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		  } finally {
+		    if (reader != null) {
+		      try {
+		        reader.close();
+		      } catch (IOException e) {
+		        e.printStackTrace();
+		      }
+		    }
+		  }
+		} 
+*/
+	
+	// will read from Sdcrad / internal storage
+	public void onClickLoad(View view) {
+		try
+		{
+			//---SD Storage---
+            /*File sdCard = Environment.getExternalStorageDirectory();
+            File directory = new File (sdCard.getAbsolutePath() +"/MyFiles");
+            File file = new File(directory, "textfile.txt");
+            FileInputStream fIn = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(fIn);
+*/
+            
+            
+            //---internal storage
+            //read from file , save it in s and display in the edit text
+            
+			FileInputStream fIn =openFileInput("textfile.txt");
+			InputStreamReader isr = new InputStreamReader(fIn);
+            
+            
+			char[] inputBuffer = new char[READ_BLOCK_SIZE];
+			String s = "";
+
+			int charRead;
+			while ((charRead = isr.read(inputBuffer))>0)
+			{
+				//---convert the chars to a String---
+				String readString =
+						String.copyValueOf(inputBuffer, 0,
+								charRead);
+				s += readString;
+
+				inputBuffer = new char[READ_BLOCK_SIZE];
+			}
+
+
+
+Action Bar
+ActionBar actionBar = getActionBar();
+actionbar.hide();
+actionbar.show()
+
+agar action bar split karna ha to manifest file ma android:uiOptions="SplitActionBarWhenNarrow" ye likho.
+CUSTOM VIEW DIKHANE KA HA TO 
+ ActionBar actionBar = getActionBar();
+    // add the custom view to the action bar
+    actionBar.setCustomView(R.layout.actionbar_view);
+//for sharing purpose
+ <item android:id="@+id/menu_share"
+          android:title="Share"
+          android:showAsAction="ifRoom"
+          android:actionProviderClass="android.widget.ShareActionProvider" />
+MenuItem shareitem = menu.findItem(R.id.menu_item_share);
+ShareActionProvider obj=(ShareActionProvider) shareitem.getActionProvider();
+public void doShare() {
+    // populate the share intent with data
+    Intent intent = new Intent(Intent.ACTION_SEND);
+    intent.setType("text/plain");
+    intent.putExtra(Intent.EXTRA_TEXT, "This is a message for you");
+    provider.setShareIntent(intent);
+  } 
+
+garbage collection
+
+heap=young generation(initial code)stops all thread and shuffles in two parts/tenure(80% par gc chalta ha)-concurrent mark and sleep/permanent(code)
+
+WSDL-webservice description language.
+SOAP stands for Simple Object Access Protocol
+WSDL
+definitions>
+
+<types>
+  data type definitions........
+</types>
+
+<message>//parameters of function
+  definition of the data being communicated....
+</message>
+
+<portType>//functions
+  set of operations......
+</portType>
+
+<binding>
+  protocol and data format specification....
+</binding>
+
+</definitions>
+
+WSDL-one way operation/request-response/notfication/solicit-response
+<porttype>--batayega operations that can be performed
+<binding>--name and type sttribute hota ha.Type ma batayega ki kis port k lia binding dikha raha ha
+<binding type="glossaryTerms" name="b1">
+   <soap:binding style="document"
+   transport="http://schemas.xmlsoap.org/soap/http" />
+   <operation>
+     <soap:operation soapAction="http://example.com/getTerm"/>
+     <input><soap:body use="literal"/></input>
+     <output><soap:body use="literal"/></output>
+  </operation>
+</binding>
+
+ask anurag--what is RPC???????????????????????????????????????????????????????????
+ask anurag--base-64 encoding????????????????????????????????????????????????????????????????
+skeleton for soap message
+
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope" //wile accessing soap.."http://www.w3.org/2001/12/soap-envelope" ye jo name likha ha yahi use karna hota ha warna error
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+
+<soap:Header>//app specific info hota ha
+...
+</soap:Header>
+
+<soap:Body>
+...
+  <soap:Fault>
+  ...
+  </soap:Fault>
+</soap:Body>
+
+</soap:Envelope>
+
+example of envelope
+
+POST /webservices/tempconvert.asmx HTTP/1.1  //URL
+Host: www.w3schools.com
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+SOAPAction: "http://www.w3schools.com/webservices/CelsiusToFahrenheit"  //SOAPACTION
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <CelsiusToFahrenheit<ese METHODNAME kehte hain> xmlns="http://www.w3schools.com/webservices/">//NAMESPACE
+      <Celsius>string</Celsius>
+    </CelsiusToFahrenheit>
+  </soap:Body>
+
+Android ma soap basic services kaise use karen??????
+
+
+SoapObject request=new SoapObject(NAMESPACE, METHOD_NAME);//parametrs esne methodname ka dalla ha so that particulr method accesss kare.
+request.addProperty("Celsius", "32");
+SoapSerializationEnvelope envelope=new SoapSerializationEnvelope(SoapEnvelope.VER11);//envelope banane k lia
+envelope.setOutputSoapObject(request);//envelope ma request insert ho jayega
+HttpTransportSE transport=new HttpTransportSE(URL);
+trasnport.call(SOAP_ACTION, envelope);
+SoapPrimitive result=(SoapPrimitive)envelope.getResponse();//sirf primitive type k lia agar response array etc ha to SoaObject use karne ka ha.
+
+</soap:Envelope>
+
+Widget 
+
+SkeltonAppWidjet extends AppWidgetProvider
+ondeleted();
+onenabledd();
+ondisable();
+onupdate(Context ct,AppwidgetManger manager,int[] widgetids){
+RemoteViews view = new RemoteViews(context.getPackageName(),
+					R.layout.widget_layout);// inflate karne k lia
+}
+
+<receiver 
+            android:name=".SkeltonAppWidjet"
+            android:icon="@drawable/ic_launcher"
+            android:label="examle widjet">
+            <intent-filter >
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data 
+                android:name="android.appwidget.provider"
+                android:resource="@xml/mywidjet"/>
+        </receiver>
+
+
+
+
+
+
+
+

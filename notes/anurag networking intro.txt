@@ -1,0 +1,29 @@
+pysical layer--IP layer--tcp layer--app layer
+
+wifi/Lan---physical layer wifi--collision detection and all..
+Routers bahoot sare switches se joora hota ha..har ek router k pass ek table hota ha jis ma sare computers ka ip@ hota ha...kaun se switch k pass ha ye computer use e bhi pata ha...so it just routes.
+ek gateway bhi hota ha--bahar ki duniya se joora ha..
+ghar ka system--subnet.'
+Gatway beech ma ha...subnet aur www se...uske routing table
+
+Ip header ko padh kar routers log kaam karte hain..not entire msg.
+IPV4 coz 4 bytes..32 bits not enough till no due to population
+IPv6
+	TCP-reliable transition ogf data k lia.
+TCP pehle handshake karte hain(both sided)...part by part bhejte hain data.. bahoot bada data..(request acknowledge)..every msg has sequence number.if any sequnece is missing any one party can resnd or re request.
+{IPHEADER}{TCP HEADER}{msg}
+{router}{OS}-padhega
+App layer ma read write karo--eske protocol hain--http,scp,ftp,smtp
+DNS server ek sort of directory ah jis ma sare websites ka ip@ ha...Internet registrar ma website ka name and ip@ deta ha b4 opening or hosting.
+nslookup.exe google.com de dega ketne ip par wo chal raha ha.
+ping google.com-- for handshking
+ip header-TCP header-http header--pathar()
+Socket ek object ha jo ki OS aur program ki baat karne ki cheez ha about one particulr port number.
+
+
+http request response ham get,post methods se karte hainget walle ma length ka restriction hota ha.post ma anhi hota ha.
+https TLS par based ha.aab samjho ki kya ha ye TLS.ek letter post karna ha.we dont trust postman.ham letter ko ek box ma dalenge.
+use lock karenge aur key apne pass rakh lenge.reciever use recieve kar k apne key se lock karega aur wapas bhej dega.
+mine par ham use apne key se khol denge aur postman ko de denge.reciever ko jab milega wo apne key se khol lega aur padh lega.
+eslia aab koi router ya switch ese smell nahi kar sakta ha raste ma.no sniffing.
+

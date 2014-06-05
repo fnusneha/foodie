@@ -1,0 +1,26 @@
+How to use Fragments?
+This involves number of simple steps to create Fragments.
+
+First of all decide how many fragments you want to use in an activity. Fors example let's we want to use two fragments to handle landscape and portrait modes of the device.
+
+Next based on number of fragments, create classes which will extend the Fragment class. The Fragment class has above mentioned callback functions. You can override any of the functions based on your requirements.
+
+Corresponding to each fragment, you will need to create layout files in XML file. These files will have layout for the defined fragments.
+
+Finally modify activity file to define the actual logic of replacing fragments based on your requirement.
+
+Here is the list of important methods which you can to override in your fragment class:
+
+onCreate() The system calls this when creating the fragment. You should initialize essential components of the fragment that you want to retain when the fragment is paused or stopped, then resumed.
+
+onCreateView() The system calls this callback when it's time for the fragment to draw its user interface for the first time. To draw a UI for your fragment, you must return a View component from this method that is the root of your fragment's layout. You can return null if the fragment does not provide a UI.
+
+onPause() The system calls this method as the first indication that the user is leaving the fragment. This is usually where you should commit any changes that should be persisted beyond the current user session.
+FragmentTransaction ft = getFragmentManager().beginTransaction();
+ft.replace(R.id.your_placehodler, new YourFragment());
+ft.commit(); 
+
+
+
+http://code.tutsplus.com/tutorials/android-user-interface-design-working-with-fragments--mobile-5367
+Best article for fragments

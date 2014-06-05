@@ -1,0 +1,16 @@
+Thread and process
+Process ka structure--code/stack/heap
+Threads ka apna stack hota ha... baki sab apne process ka hi use karta ha.
+Threads share memory b/w threads of same process.
+Process do not share memory with other process unless defined by inter process communication by OS.
+
+Activity destroy hoga to Thread jo download kar raha tha wo bhi destroy hoga.
+downloadThread = (Thread) getLastNonConfigurationInstance();
+        if (downloadThread != null && downloadThread.isAlive()) {
+            dialog = ProgressDialog.show(this, "Download", "downloading");
+        }
+// Save the thread
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        return downloadThread;
+    }

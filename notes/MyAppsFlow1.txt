@@ -1,0 +1,95 @@
+
+Salon Valenti ma acha font dala gaya ha..es tarah
+Typeface.createFromAsset(getAssets(), "fonts/futura_oblique.ttf");//asset folder ma .ttf extension se ye sab fonts save karna hota ha.
+tx.setTypeFace();//es se font apna define kar sakte ho.
+
+
+
+Bluetooth/skype/drive/email/gmail/add to dropbox
+ye sab se share karne k lia ye code ha.eska matlab ye nahi ha ki koi outh use hua ha es ma.samjhi?
+
+Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("text/html");
+		intent.putExtra(android.content.Intent.EXTRA_EMAIL,
+				new String[] { "to@email.com" });
+		intent.putExtra(Intent.EXTRA_SUBJECT, "I am subject");
+		intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+
+		startActivity(Intent.createChooser(intent, "Send Email"));
+
+Maps intent ire karne k lia--
+Intent i = new Intent(Intent.ACTION_VIEW,
+				Uri.parse("google.navigation:"
+						+ "ll= 37.530562400000001, -121.9193022&mode=d"));
+
+		startActivity(i);
+
+Calendar cal=Calendar.getInstance();
+cal.clear();
+cal.set(dpicker.getYear(), dpicker.getMonth(), dpicker.getDayOfMonth(),
+				tpicker.getCurrentHour(), tpicker.getCurrentMinute());
+
+
+
+
+
+Ques to ask Lobab--
+1>Inspiro uses only outh for facebook and twitter.right?
+2>show myNetworking app on your mobile and ask cant we do this with twitter or facebook?
+3>Image memory caching and disk caching is acheved by Picaso or some other code is also used.Does picaso handle everything?
+4>what to ans if they check Inspiro and find many bugs in it.Like-fb api key not generated.
+5>How to ans for the password security i.e  static variable in stamping Salon valenti?
+6>Time duration for each app.
+
+
+
+Inspiro
+
+1>Action tab and view pager for two contents-WorldView and Favourate using FragmnetstatePagerAdapter.
+2>Used Flicker Restfull Api to get popular countries,cities in that and popular images in each city.
+3>In World View used ExpandableListview with BaseExpandableListAdapter to Load data.
+4>Supporting diffrent orientation,it shows expandable list and favourates tab both in same activity.
+5>Using Google Maps,showed markers on the map for all the contries and cities in the list.Clicking on the marker let us see the most popular image for that city.
+6>share image through facebook,Twitter,Drive,gmail and skype from your favourates.
+7>Clicking on each City there is custom List view that has an image view and two Image buttons(one for adding to favourate and one for sharing via facebook).Clicking on each image shows the larger image.
+8>These images have been shown using Picaso Library that helps in memory and disk caching.
+9>Favourate tabs help us to see the favourates added and delete it as well by simply swapping the image right.
+
+Salon Valenti
+
+1>used Salon valenti restfull API to make this app.
+Appointmnets 
+opens a new activity----
+   a>New user-enter first name/last name/email id/phone num(saves in sqlite database)
+   b>Edit User-one can edit the information and accoridngly it edits in database
+   c>Manage Users-shows all the users added.can delete any usr/update their info/select him for the current trasaction.Remembers which user is selected and displays accordingly.
+   d>Appointmnet Policies--gives the appointment policy of the saloon in a new activity
+   e>Make Appointmnet--opens a web view where java script is enabled and used for auto filling of basic info.Has to choose atleast one service.,can select date in calendar.
+After selecting date and service and cicking on book appointmnet.
+A table is displayed of availble appointmnets.column anmes are-
+date/service id/service desription/start time/end time/employee
+Finally a final page comes up for reviwing the appointmnet and scheduling the appointmnet.Once done you recieve a message.
+  f>send mail to salon
+
+
+
+Rewards Card-
+Salon People stanp the card and the background for  buttons change once .Once all the buttons get colored.They can get complimentray service showing to them.
+
+Meet our staffs-
+Opens a custom list view for all staffs with one image and small intro.
+Clicking on each list view item takes to a new activity that has detailed information about the staff.
+
+Contact us-
+opens an activity with the address,phone number and email id.
+Has Three buttons-Call/E-mail/Directions
+E-mail-The selected user information is auto filled and can send mails via gmail/skype
+call throws an intent for calling.
+get Directions-Using Google Maps navigates us there.only intent thrown.
+
+
+Facebook-
+Opens Salon valenti facebook page(just opening a intent in browser)
+
+Reviews-
+using custom list and Yelp API few reviews can be seen(clicking the reviews takes us to yelp page through yelp app or browser),Review US utton takes to yelp page to review the saloon.Used scribe library for outh with yelp.

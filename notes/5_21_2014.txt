@@ -1,0 +1,54 @@
+void mergeSort(int Arr[], int p, int r) {
+	int mid = (p + r) / 2;
+	if (p >= r) {
+		return;
+	}
+
+	mergeSort(Arr, p, mid);
+	mergeSort(Arr, mid + 1, r);
+	mergeSorted(Arr, p, mid, r);
+
+}
+<5 elements insertion sort best
+>50 merge sort
+
+
+
+
+Java
+
+Java-all sortings***********************************as quick sort anurag
+Binary search
+java quiz ques
+String class/string bulder**********************************8
+java qustions from that list of questions
+Java tutorial point.*************************************************
+http://javarevisited.blogspot.com/2011/06/top-programming-interview-questions.html
+
+CPP
+
+Learn your project from anurag
+C++ threading concept from ur notebook
+Diffrence b/w cpp and java
+
+
+Android.
+
+all four projects interanall working and related topics.
+correct the cloud app.
+Graph View for showing graphs.
+Image Loader.
+Networking App.(kisi ek website se outh kar k parse karo aur custom list view ma dikhao)
+AIDL in detail.
+ALL INTERVIEW QUESTIONS!!!!(in detail) and company wise interview questions sheet also.
+Intro to JNI
+Android Testing tools--learn one testing tool.
+Diffrence b/w native hybrid etc development.
+AJax and bluetooth.
+
+From Sunday afternoon.
+
+Revice everything.
+
+
+

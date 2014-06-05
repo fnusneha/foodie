@@ -1,0 +1,9 @@
+XML parsing
+DOM/SAXParser/XMPPull
+DOM-tree/memory consuming/Random access/slowest/if u want to revisit documnet gain and again use this!!!
+SAX Parser-push(events)
+XMpull-iterator/fastest
+
+JSON-{}--object
+[]--array
+[{},{},{}]--array of objects

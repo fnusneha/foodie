@@ -1,0 +1,24 @@
+MediaStore,Browser,Calllog,Contacts,User Dictonry are the contentproviders that come as we buy phone...These are android content providers.
+
+contentprovider uri-content://authorityname/tablename/rowname(optional).
+manifest file ma <provider> k andar dalna ha.
+
+Q> Uri kaise declare kaROGE APNE cONTENTpROVIDR KA?
+public static final Uri CONTENT_URI =
+Uri.parse("content://com.example.codelab.transportationprovider");
+
+content://contacts/people/5.-- This would give me 5th contact in my phone
+onCreate() This method is called when the provider is started.
+
+query() This method receives a request from a client. The result is returned as a Cursor object.
+
+insert()This method inserts a new record into the content provider.
+
+delete() This method deletes an existing record from the content provider.
+
+update() This method updates an existing record from the content provider.
+
+getType() This method returns the MIME type of the data at the given URI.
+
+Cursor c = getContentResolver().query(uri, null, null, null, null);
+getContentResolver helps us for CURD operations.

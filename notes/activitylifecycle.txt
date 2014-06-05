@@ -1,0 +1,3 @@
+onStart() complements onStop().
+onPause() complements onResume().
+onRestart() ma code likhne k badle onStart() ma likh do,coz onStart dono time cal hota ha,on creation bhi aur on pause hone k baad on resume ma bhi.

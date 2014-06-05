@@ -1,0 +1,48 @@
+
+Architecture
+1>Application
+framework
+Sqlite/DVM(written in c/cpp)
+OS kernel
+2>app class ma--
+onCreate/onTerminate/onConfigChanged/onLowMemory
+
+
+a1 se a2 call karoge to onsaveinstance/onpause/onstop call hoga
+stop kab kab jayega activity?phone ayega
+
+activity ko agar destroy nahi kana ha wen changing the orientaion.
+getlastInstance
+<activity>
+android:configchange="orientaion"
+</activity>
+onConfigChanged() has to be overridden
+
+
+IntentFiletr obj banao
+class ka obj banao jo broadcast recievr extend kar raha
+registerReciever(dono obj ka parameter)
+
+Service run in same process and same thread.
+
+AsyncTask--4 methods to override
+
+how to run Async task concurently?
+
+storage
+Bundle/Application
+Files/Sqlte/SharedPrefrnc/Netwrking
+assets/raw/drawable/string
+
+
+Share Data--
+app class/extras
+
+Student implement serializable--tab hi ek activity se dure ma pass hoga.
+httpClient/http.Urlconnection(bugs before 2.3)
+tomcat webserver
+SSL ka an s dhoondo
+AJAX-asynchoronized java xml
+do things in background and update the UI widout the need to refresh the page.
+
+HYBRID/MOBILEWEB APP/NATIVE 

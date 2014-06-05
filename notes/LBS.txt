@@ -1,0 +1,60 @@
+LBS
+
+Locationmanager-
+find location of ur device
+set proximity alerts if you move inside or outside certain ares.
+track movement
+find available location providers
+
+LocationManager manager=(LocationManager)getSystemServices(LOCTIONSERVICES);
+<uses permision=ACCESS_FINE<COARSE>_LOCATION>
+Criteria se tum dictate kar sakti ho ki tumhare kya cririas hain eg-criteria.setAccuracy(Criteria.Accuracy_Fine)
+criteria.setPowerRequirement(Criteria.powerlow);
+
+you can get the provider by-
+string provider=locationManager.getBestPovider(criteria,true);
+Location location=Manager.getLastKnownLocation(provider);
+updatewithnewlocation(location)//???
+Manager.requestlocationupdates(provider,2000,10,listener);
+private LocationListener listener=new LocationListener(){
+public void onlocationchanged(Location location){
+updatewithnewlocation(location);//ye ek method banao jis ma getlatitude and get longitude kar k location banwa lo.
+}
+//aur bhi bahoot sare methods hain overrride karne k
+onstatuschanged(provider,int status,bundle)
+onProviderchanged()
+
+
+Geocoding---address to latlong and vice versa<include internetpermission>
+//forward geocoding
+ArrayList<Adress> addressList=geocoder.getFromLocationNmae(cityname,1);
+Address address=AddressList.get(0);
+if(address.hasLatiude && address.hasLongitude()){
+adress.getlongitude();//save kar lo kahin
+address.getlatitude();
+//reverse geocoding
+ArrayList<Adress> addresslist=geocoder.getFromLocation(lat,long,1);
+StringBuilder sb=new StringBuilder();
+if(addresslist.size>0){
+Address adress=addressList.get(0);
+for loop adress.getMaxAdressLineIndex() tak
+sb.append(adress.getLocality())
+sb.append(adress.getPostalCode())
+sb.append(addresss.getCountryNmae())
+
+ye sab android ka kaam tha..aab key genrate karo Map APi se and drag map view and key paste karo wahan
+MapController c=myMapView.getController();
+c.setZoom(1)//1 se 21 daal sakte hain
+
+
+OverLay class helps us to put some cutomized marker or pins on ceratin locations and handle clicks when we tap that location on our MapView.
+
+Directions batane k lia-
+Google Map ka Direction API use karenge
+httpClient use kar k connection abna kar post ma equest karengeResponse ko parse karengephir duration etc mil jayega
+CameraUpdate UPDATE = CameraUpdateFactory.newLatLngZoom(toShow,
+						10);
+				googleMap.animateCamera(UPDATE);
+				googleMap.addMarker(new MarkerOptions().position(toShow).title(
+						"Your Location"));
+

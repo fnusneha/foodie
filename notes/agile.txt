@@ -1,0 +1,21 @@
+1>Create backlog i.e. all the features clinet wants.(backlog grooming)-user stroies likha hota ha.
+2>estimation of the budget and time frame.
+3>prioritization-back log ma likhoge kya kya main importance ka ha..uske according sabse acha features jo 4>exceptionally acha ha wo top par ayega.
+5>sprints---time frame of 3-30 days
+Sprint team meeting hoti ha-jis ma project manager milta tha aur bolta tha kaun kaun sa fetaures pehle develop hoga aur ketne din lagege?es sprint ma kya kya kar loge?---Es se banta ha sprint backlog aur team members ko assign ho jata tha.
+6>Daily 15mins k lia (SCRUM) milte hain aur poochte hain team members se ki last scrum se abhi tak kya kia?next scrum tak kya karna ha? kya difficuties a rahe hain es ma?
+
+7>jab ek sprint khatam ho jata ha to sprint retrospective meeting held hoti ha jis ma do cheezon par dhayn dia jata ha--what went well?
+what went wrong?areas of improvement.
+
+
+SCRUM MASTER
+BURN DOWN CHART
+
+phir sprint0-2 start hota ha----
+
+har ek sprint ma ye sab cheezen hoti thi--
+1>sprint planning
+2>daily stand up
+3>End-of sprint review
+4>retrospective

@@ -1,0 +1,111 @@
+polymorphism ma agar mehod override kar rahi ho to overriden method can not bw more private.
+== based on refrences ans deta ha
+equals method ko override karna hoga.INteger class k lia already overrriden ha eslia sahi ans deta ha.
+public booleanequals(Object rhs) {
+if(rhsinstanceofSimpleCube)
+SimpleCubec= (SimpleCube)rhs;
+return(side==c.side&& color.equals(c.color));
+}
+
+agar inner class public ha static nahi ha to usko bahar se use kar sakte hain with the outer class name.
+outer.inner obj=outerobj.new inner();//eise object banega
+
+
+
+For iterating through HashMap
+
+for (Map.Entry<Character, Character> entry : MyAlphaNum.entrySet()) {
+
+			System.out.println("the key is:" + entry.getKey());
+			System.out.println("the value  is:" + entry.getValue());
+		}
+
+Anonymous class
+
+class A {
+	public void add() {
+		System.out.println("i m in A class");
+	}
+}
+
+public class Driver {
+
+	public static void main(String[] args) {
+		A a = new A() {
+			@Override
+			public void add() {
+				System.out.println("i m in child class");
+			}
+		};
+		a.add();
+
+	}
+
+}
+
+Runnable thread-see runnable walla program
+
+FILES
+
+for writing to file
+
+File data = new File("grades.txt");
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
+				data)));
+out.print(5);
+out.print('c');
+
+for reading from file
+
+public class TextReaderApp{ public static void main(String args[]) throws IOException{
+ File data = new File("example.txt"); 
+if (data.exists()){ BufferedReader in = new BufferedReader( new FileReader(data));
+ String line = in.readLine(); 
+while(line != null){
+ System.out.println(line); 
+line = in.readLine(); 
+} 
+in.close();
+ } 
+else System.out.println("File not found - example.txt"); 
+}
+}
+
+
+
+agar objects khud ka banao aur map ma bhado to toString method override karna ha aur equals method aur hashcod emethod.Source-override equls and hash code.
+
+
+overriding equls method--
+public boolean equals(Object rhs) {
+		if (rhs instanceof Student) {
+			Student s = (Student) rhs;
+			return (fname_.equals(s.fname_) && lname_.equals(s.lname_) && grade_ == s.grade_);
+		} else {
+			return false;
+		}
+
+	}
+
+compareto Function overwriding
+
+public int compareTo(Student rhs) {
+
+		if (this.first_name_.compareTo(rhs.first_name_) > 0) {
+			return 1;
+		} else if (this.first_name_.compareTo(rhs.first_name_) < 0) {
+			return -1;
+		} else if (this.first_name_.compareTo(rhs.first_name_) == 0) {
+			if (this.last_name_.compareTo(rhs.last_name_) > 0) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
+
+		return 0;
+	}
+kisi range ma random number dhoondna ha to
+Random rand = new Random();
+			int randomNo = rand.nextInt((highRange - lowRange) + 1) + lowRange;
+

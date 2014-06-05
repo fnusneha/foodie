@@ -1,0 +1,18 @@
+Static and Dynamic-data storage.
+Dynamic-temporary and permanent.
+Static kahan store karoge?--Drwable,asset,string.xml,Raw
+Temp-Dynamic- Application,Bundle(Intent)
+Permanet-DYNAMIC---Files,sqlite,Shared Prefrence file,SD card,Content Provider,Networking
+
+
+Shared Prefrence--
+xml file
+accept only primitive data type and String
+usually for Setting.
+key value pair ma hoga
+2 types-per activity and per application.
+per activity-getPrefrence(Mode(private/redable,writtable) ).
+per application-getSharedPrefrences(Mode,"filename").-----all components can access it.
+
+
+

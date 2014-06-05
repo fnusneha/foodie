@@ -1,0 +1,11 @@
+We have a singelton class called-IMAGE LOADER.It has a function called LoadImage.
+LoadImage()--> This fnction takes url of the image and the image view id where the image has to be displayed.
+ImageLoader class has a thread pool and a handler.
+Handler---apne post method se display karta ha.Normally ham image ko list view ma dikhana chate hain .
+
+
+Now we have two more classes.Memory cache and Fle cache.
+
+Thread pool ko jab url milta ha to wo memory cache ma dekhta ha ki wo object ha ki nahi.Memory cache bole to heap ma e linkedhash ma hota ha.es ma ham max limit 1/4 of the run time memory se chk karte hain.agar wo limit se bahar ha to ham linked hash map se delete karte hain.jo ki LRU type ha.Agar hamen linkedhash map ma mil jata ha wo object to ham sidha handler se post kar dete hain main thread ma.
+agar wahan nahi mila to ham file cache ma dhoondte hain.nahi mila wahan bhi to ham dowload karte hain.download karne se pehle phir se ek baar check karte hain ki sahi ma dowload still karna ha kya?download ka r file ma aur memory cache ma copy kar dete hain so that next time easy ho.
+Hnadler use kar k ham post karte hain but us se pehle ye dekhte hain ki still post karna ha kya?agar karna ha to post kar dete hain.

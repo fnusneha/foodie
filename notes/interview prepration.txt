@@ -1,0 +1,35 @@
+Visible activity -onpause ma bhi partially visible ko kehte hain.
+foreground==onpause and onresume k beech ma
+activitycreator--set of shel scripts ha jo use hota ha file structire android k lia anane ma eclipse ma.
+
+
+When to us thread when to use Asynctask?
+heavy downloads/uploads ya CPU intensive tasks should be in threads.
+Frequent posting to UI should be in AsyncTask.
+ek fadoo ans---- threads se widget ma post last ma hi kar sakte hain warna exception throw karta ha.
+
+
+
+HeadLess fragments-----
+enke head nahi hota ha coz ye sirf setRetainInstance true karne k lia hote hain...so that hamara background process ese
+use kar sake taki config change ma enhe dhyan na dena pade kisi bhi cheez par.
+
+Headless fragment banane k lia bas oncreateView() method ma null return kar do.
+
+
+LOADER
+
+-use to load data from data source to activity/fragmnet.
+-agar jo object load karna tha wo disconnect ho agya ha to it manges it own cache and save it there
+-config change ma bhi persist karta ha data ko.
+getLoaderManager().initLoader(0<id for identifiend loader>, null<bundle>, this<class which should implement LoaderManager.LoaderCallbacks interface>);
+oncreateLoader()/onLoadFinished()
+
+CursorLoader-by default backfround ma kaam karta ha so that ANR na ho jaye.
+
+Etne ways ma UI thread par run kar sakte ho kuch bhi
+Activity.runOnUiThread(Runnable)
+View.post(Runnable)
+View.postDelayed(Runnable, long)
+Handler
+ 

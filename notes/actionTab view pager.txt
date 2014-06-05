@@ -1,0 +1,107 @@
+LIFECYCLE OF FRAGMNET in FragmnetPagerAdapter
+ONCE YOU GOT O FRAGMENT-A
+ONATTACH()
+ONCREATE()
+ONCREATEVIEW()
+ONACTIVITYCREATED()
+ONSTART()
+ONRESUME()
+IF YOU GO TO FRAGMNET-B FROM A
+ABHI ONPAUSE()
+ONSTOP() 
+ONDESTRYVIEW() NAHI NAHI NAHI IIIIIIIIIIIII CALL HOTA HA!!!!!!!! KYUN?
+android ko pata ha ki tum wapas ja sakte ho fragmnet-A ma coz fragmnet-B just uske baad aya ha.But,if you go to FRAGMENT-C
+FRAGMENT-A ka sara methods call ho jayega.ONPAUSE()
+ONSTOP() 
+ONDESTRYVIEW()
+
+but notice karo ONDETCH() nahi call hua ha coz object abhi tak ha fragmnet ka,activity khatam nahi hui ha.
+FRAGMENT-C se FRAGMENT-B ma jaise hi gai waise hi FRAGMNET-A ready ho jayega.
+uske ye emthods called ho jayenge-
+ONCREATEVIEW()
+ONACTIVITYCREATED()
+ONSTART()
+ONRESUME()
+
+
+NOTE!!!! onsaveinstance() kahin call hua hi nahi ha.eska matlab ha ki..agar F-A ma tum oi download kar rahi thi to wo C ma jaogi to band ho jayega .THIS IS WHERE
+WE USE STTEADAPTER.
+
+
+LIFECYCLE OF FRAGMNET in FragmnetStatePagerAdapter
+ONATTACH()
+ONCREATE()
+ONCREATEVIEW()
+ONACTIVITYCREATED()
+ONSTART()
+ONRESUME()
+
+F-A se F-B ma jane par-
+kuch nahi
+
+F-B se F-C jane par
+
+onSaveInstance()
+onPuase
+onstop
+ondestryView
+ondestry
+ondettach
+
+eska matlab ha ki unlike previous one ye walla adapter object destry kar deta ha and onsave instance call karta ha jahan par tum save kar sakti ho apna kaam.
+aur objects abchta nahi ha fragmnet ka eslia any umber of pages tum abna sakti ho. 
+
+
+
+
+
+
+
+
+
+swipe tabs(few hona chahiye) and scroll tabs(scroll kar sakte ho,u can have many)
+1>create fragments jetna pages chahiye(jetne tabls utne pages)
+2>create viewpager in activity_main.xml(container types/root layout)
+3>PagerAdapter is used to fill data to view Pager.
+PagerAdapter are of two types-FragmentStatePagerAdapter and FragmnetPagerAdapter 
+
+FragmnetPagerAdapter-small number of pages(onsave instance is not called once fragmnet is destroyed.)swapping b/w pages
+ma getCount will be called multiple times but getItem will only be called once for every page(jab pehli baar us ma swap kar k aphunch rahi ho).
+but wapas se agar tum swap karoge pichle walle pages par ane k lia to wo fragmnet dikahyega coz wo java object fragmnet ka destry nahi hota ha.
+but uska koi view nahi dikahyega coz getItem() call hi nahi hota ha.
+
+FragmnetStatePagerAdapter-large number of pages(onsave instace state is called)
+getItem() position daal kar get ur fragmnet.
+getCount()
+getPageTitile()
+4>Add titile inside ViewPager(PageraTitleStrip kehte hain use.xml banao uska,id de do us xml ka).getPageTitle() jab call karoge tab uske parameter ma position hota ha.
+har ek position k lia ek ek title return kar do.ban jayega tera croll tab.
+
+
+
+Note-Etna kaam karne se tera view pager kaam karne laga aur tabs bhi ban gaye... but wat abt agar tumhe tabs par click kar  pages kholna ha ya swap karo to dusra tab highlisght ho jaye?
+
+ActionBar ac=getActionBar();
+ac.setNavigationMode(ActionBar.navigation_mode_tabs)//tells ki aage tab ane walla ha
+ActionBar.Tab tab1=actionbar.newtab();
+tab1.setText("");
+tab1.setListener(this);
+actionbar.addTab(tab1);
+
+Etna kane par sare tabs actionbar ma add ho gaye.but ham chate hain ki har ek par click karo to ne new page khule.right?
+implement ActionBar.TabListener
+onTabSelected(tab,FragmentTrasaction)
+nTabreselected()
+onTabunslected()
+
+implement ViewPager.OnPageChangeListener
+onpageselected()
+onPgaeScrolled()
+
+
+aab dono actions ko relate karna ha---- tab select karo to viewpager ko bhi pata hona chaiye so that wo apna page dikahye.
+view pager scroll ho to action bar k tabs ko pata chalna chaiye ki wo highliting change kare aur scroll ho jaye.
+
+
+setseletednavigationitem(int position)---(onPageSelected ma of viewpager)
+viewpager.setcurrentitem(int position)--(ontabselected ma of tab)

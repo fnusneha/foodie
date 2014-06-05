@@ -1,0 +1,50 @@
+Service runs in main thread and safe process-by default
+ANR-app not responding
+background.
+make service foreground===make prority of service equal to activity.
+
+Service in diffrent thread.
+1>Thread
+2>asyncTask--allows to run in diffrnt thread.(and update UI)
+3>Intent Service
+
+Overrid emethod for Async task--
+AsyncTask(1,2,3)
+onPreExecute()==main thread
+on ProgressUpdate(2)==main thread
+onPostExecute(3)==main thread
+doInBackground(1)--must===other thread{publishProgress();}
+
+return sticky-----location tracker
+return non sticky--- alarm
+return redeliver intent--download
+
+
+Service.START_STICKY	 Service is restarted if it gets terminated. Intent data passed to the onStartCommand method is null. Used for services which manages their own state and do not depend on the Intent data.
+Service.START_NOT_STICKY	 Service is not restarted. Used for services which are periodically triggered anyway. The service is only restarted if the runtime has pending startService() calls since the service termination.
+Service.START_REDELIVER_INTENT	 Similar to Service.START_STICKY but the original Intent is re-delivered to the onStartCommand method.
+
+Why runninfg service in seperate process?
+android:process=":my_process"   This is how u make a service local,so that only your app can use it,not nay oher from ur device.
+Running a service in its own process gives it its own memory address space and a garbage collector of the virtual machine in this process does not affect the application process.
+
+if my Service wants to return something to the calling activity.... 
+
+If the service should be communicating back to the activity, it can receive an object of type Messenger via the Intent data it receives from the activity. If the Messenger is bound to a Handler in the activity, the service can send objects of type Message to the activity.
+Async task==5 threads hi abna sakta ha.
+
+
+When to use aync task and thread?
+when populating UI use Async task.
+
+
+Service OR IntentService!!!!!IntentService by default difrnt thread ma run karega.
+Service-onStratCommand().--will not stop itslef.
+IntentService-onHandleIntent().---will stop by itslef.--can not update UI.---handle one itent at a time---No max limit for threads.
+IBinder ins ame process binding.
+AIDL for interprocess communication.
+
+Mock interview ma ayega Notification
+
+
+

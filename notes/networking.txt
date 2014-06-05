@@ -1,0 +1,29 @@
+http://--- port 80
+difrnc b/w web application and web server.
+stateless communication
+get /post difrrnc b/w http:get http:post
+Http header
+Request Methods
+
+
+
+HHtp redirects---servlet/controller
+HttpsURLCoonection max five hi redirect kar sakta ha...srvlet 5 hi karega apna capability ko expand :(
+To upload data to a web server, configure the connection for output using setDoOutput(true).
+For best performance, you should call either setFixedLengthStreamingMode(int) when the body length is known in advance, or setChunkedStreamingMode(int)
+
+Steps t download fro network anything using httpconnection
+
+
+
+When users click the button that invokes myClickHandler(), the app passes the specified URL to the AsyncTask subclass DownloadWebpageTask.
+The AsyncTask method doInBackground() calls the downloadUrl() method.
+The downloadUrl() method takes a URL string as a parameter and uses it to create a URL object.
+The URL object is used to establish an HttpURLConnection.
+Once the connection has been established, the HttpURLConnection object fetches the web page content as an InputStream.
+The InputStream is passed to the readIt() method, which converts the stream to a string.
+Finally, the AsyncTask's onPostExecute() method displays the string in the main activity's UI.
+
+
+[]--array
+{}--object

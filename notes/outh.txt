@@ -1,0 +1,111 @@
+Intro about outh protocol.
+
+sneha.com ya mera koi android app ha jise anurrag ko use karna ha .us ma ek button ha link with twitter.aab dekho outh kaise use hota ha?
+ma twitter k developer site par ja kar sneha.com ka urk aur sare details dungi.twitter ek public key aur private key dega.hamen permissions mangna hoga jo twitter ne likha hoga apne site par.
+Now jab anurag mera aap use kar raha ha aur usne link with twitter click kia to wo twitter k outh url par jayega(if only tumahra app registered ha twitter par aur public key sahi use kia hua ha).OUth url har ek
+web site bataya hua hota ha.aab yahan do scenario ho sakta ha.anurag loggin nahi ha twitter par ya logedin ha twitter par.
+agar login nahi ha to outh url login url ko redirect kar deta ha.login karne k baad wapas se outh URL khul jata ha.
+OUTH url par anurag ko dikhega---ye ye ye permission sneha.com chahti ha.do u want to give?
+Yes kare par twitter ek specialcall back URL khol deta ha jo ham specify karte hain.Twiitter ek token bhejta ha jo ki us set of permissions k lia valid ha.
+agar koi token kabhi expire na kare to use ham database ma save kar sakte hain.
+
+
+
+
+
+
+
+
+Yelp k review k count and star hi dikha sakte ho but actual review dikhane k lia inAppBrowser use karna padega according to yelp API.
+scribe library i m using for yelp.com outh authentication
+two classes have to be made--yelp and YelpAPI2
+OAuthService service;
+Token accessToken;
+public Yelp(String consumerKey, String consumerSecret, String token, 
+			  String tokenSecret) 
+	  {
+	    this.service = new ServiceBuilder()
+	                        .provider(YelpAPI2.class)
+	                        .apiKey(consumerKey)
+	                        .apiSecret(consumerSecret).build();
+	    this.accessToken = new Token(token, tokenSecret);
+	  }
+OAuthRequest request = new OAuthRequest(Verb.GET, 
+					"http://api.yelp.com/v2/business/salon-valenti-fremont");
+		    this.service.signRequest(accessToken, request);
+
+
+
+
+public class YelpAPI2 extends DefaultApi10a 
+{
+
+  @Override
+  public String getAccessTokenEndpoint() 
+  {
+    return null;
+  }
+
+  @Override
+  public String getAuthorizationUrl(Token arg0) 
+  {
+    return null;
+  }
+
+  @Override
+  public String getRequestTokenEndpoint() 
+  {
+    return null;
+  }
+
+}
+
+
+
+
+List views and cursors
+
+ArrayAdapter(this,R.id.rowview,R.id.listview,array)
+listview.setOnItemClickListener(new ItemClicklistener)
+Cursor adapter k lia
+class ko implements LoaderManager.LoaderCallBacks<Cursor>
+
+getLoaderManager().initLoader(0, null, this);  se loader initialize ho gaya(id,bundle,context)
+managedQuery depricate ho agya ha kyunki we want to use loader so that content provider ka qurying walla part
+ek diffrent thread ma ho.. and also config chnage ka hamen dhayn na dena pade.
+jaise hi above intialization kia waise hi onCreateLoader() call ho jayega.
+@Override
+  public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+    String[] projection = { TodoTable.COLUMN_ID, TodoTable.COLUMN_SUMMARY };
+    CursorLoader cursorLoader = new CursorLoader(this,
+        MyTodoContentProvider.CONTENT_URI, projection, null, null, null);
+    return cursorLoader;
+  }
+
+@Override
+  public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    adapter.swapCursor(data);
+  }
+
+  @Override
+  public void onLoaderReset(Loader<Cursor> loader) {
+    // data is not available anymore, delete reference
+    adapter.swapCursor(null);
+  }
+
+Web view
+wv = (WebView) findViewById(R.id.webView1);
+		//wv.getSettings().setJavaScriptEnabled(true);
+		wv.getSettings().setUseWideViewPort(true);
+		wv.getSettings().setLoadWithOverviewMode(true);
+		wv.getSettings().setLoadsImagesAutomatically(false);
+		wv.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+
+
+Publish app on play store
+right click on ur project and choose android tools->export signed app project
+enter your key->give name ->password->alias->apk destination location
+google play store ma developer login kar k screenshot k sath upload kar do
+vedio link de sakti ha/description/countries/apna email dress phone number do/legal concent tick karo... apk file upload karo
+bahoot version kar sakte ha 
+

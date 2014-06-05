@@ -1,0 +1,58 @@
+Animation
+
+android:duration – Duration of the animation in which the animation should complete
+
+android:startOffset – It is the waiting time before an animation starts. This property is mainly used to perform multiple animations in a sequential manner
+
+android:interpolator – It is the rate of change in animation
+
+android:fillAfter – This defines whether to apply the animation transformation after the animation completes or not. If it sets to false the element changes to its previous state after the animation. This attribute should be use with <set> node
+
+android:repeatMode – This is useful when you want your animation to be repeat
+
+android:repeatCount – This defines number of repetitions on animation. If you set this value to infinite then animation will repeat infinite times
+
+
+
+class ma inplement karna ha AnimationListener.
+Methods to ovveride--
+onAnimationEnd()
+onAnimationStart()
+onnimationRepeat()
+koi bhi vie par kar sakti ha.. tx.startAnimation(an<animation ka object ha>);
+but Animation ka object kaise craete karen?
+Animation an=AnimationUtils.loadAnimation(context,R.anim.activity_main<anim folder ma animation banana hoga>);
+agar us animation ka listener bana rahi ho to an.setAnimationListenere(this) karna mat bhoolna
+
+
+anim folder ma
+ <alpha 
+        android:duration="1000"
+        android:fromAlpha="0.0"
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:toAlpha="0.5"/>
+
+
+txtMessage2.setVisibility(View.VISIBLE);--imp ha karna
+
+
+1. Fade In
+2. Fade Out
+3. Cross Fading
+4. Blink-----android:repeatMode="reverse" and android:repeatCount="infinite" set karna hoga
+5. Zoom In
+6. Zoom Out
+7. Rotate android:fromDegrees="0" and android:toDegrees="360"
+8. Move
+9. Slide Up
+10. Slide Down
+11. Bounce
+12. Sequential Animation----
+13. Together Animation
+
+This is used in ur saloon valenti very imp.
+TranslateAnimation(Animation.RELATIVE_TO_SELF, 1,
+						Animation.RELATIVE_TO_SELF, 0,
+						Animation.RELATIVE_TO_SELF, 0, 
+						Animation.RELATIVE_TO_SELF, 0);
+		translateAnim.setDuration(100);
